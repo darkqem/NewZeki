@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 623f7f2d2d6565642ba66ca9bbf1853f
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - panelToControl: {instanceID: 0}
+  - triggerButton: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
