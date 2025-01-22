@@ -5,9 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Scenes : MonoBehaviour
 {
-    public int scneneNumber;
-
-    public void Transition()
+    public void Transition(int scneneNumber)
     {
         SceneManager.LoadScene(scneneNumber);
     }
