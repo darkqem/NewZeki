@@ -10,6 +10,8 @@ public class PanelManager : MonoBehaviour
     public Button showButton; // Привязанный в инспекторе кнопка
     public bool isPanelVisible = false;
     private CurrentPosition currentPositionScript;
+    private CharacterMover characterMoverScript;
+    private MovementStep1 movementStep1;
     public Vector3 targetPosition;
 
      
@@ -19,6 +21,8 @@ public class PanelManager : MonoBehaviour
         // Инициализация кнопки
         showButton.onClick.AddListener(ShowPanel);
         currentPositionScript = Player.GetComponent<CurrentPosition>();
+        movementStep1 = Player.GetComponent<MovementStep1>();
+        characterMoverScript = Player.GetComponent<CharacterMover>();
         
     }
     void Update()
@@ -26,7 +30,10 @@ public class PanelManager : MonoBehaviour
         // Если движение активно, перемещаем персонажа
         if (isMoving)
         {
-            currentPositionScript.Movement(targetPosition);
+            //currentPositionScript.Movement(targetPosition);
+            
+            
+
 
             // Проверяем, достиг ли персонаж целевой точки
             /*if (Vector3.Distance(Player.transform.position, targetPosition) < 0.01f)
@@ -45,16 +52,16 @@ public class PanelManager : MonoBehaviour
             isPanelVisible = true;
 
             targetPosition = panel.transform.position;
-
+            characterMoverScript.MoveTo(targetPosition);
             // Запускаем движение персонажа
-            isMoving = true;
+            
         }
         else
         {
             panel.SetActive(false);
             isPanelVisible = false;
-            isMoving = false;
-            currentPositionScript.AnimateIdle();
+            
+            //currentPositionScript.AnimateIdle();
         }
     }
 
