@@ -65,6 +65,10 @@ public class CharacterMover : MonoBehaviour
         int targetFloor = GetFloor(targetPosition.y);
         float floorY = GetFloorY(targetFloor);
 
+        if(transform.position == startPosition )
+        {
+            yield return StartCoroutine(MoveToPosition(new Vector3(0.597f, 7.084f,8.248f)));
+        }
         
 
         if (currentFloor == targetFloor)
