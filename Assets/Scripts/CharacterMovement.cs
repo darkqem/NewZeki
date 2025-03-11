@@ -7,12 +7,12 @@ public class CharacterMover : MonoBehaviour
     public Vector3 elevatorPosition = new Vector3(-0.717f, 7.084f, 10.125f);
     public PanelManager panelManagerScript;
     public GameObject cameraMoveOnTrigger;
-    public Sprite[] walkSprites; // Массив спрайтов для ходьбы
+    public Sprite[] walkSprites;
     public Sprite[] idleSprites;
     public SpriteRenderer spriteRenderer;
-    private int currentFrame = 0; // Текущий кадр анимации
-    private float frameRate = 0.1f; // Скорость смены кадров
-    private float frameTimer = 0f; // Таймер для анимации
+    private int currentFrame = 0;
+    private float frameRate = 0.1f;
+    private float frameTimer = 0f;
     public float moveSpeed = 0.5f;
     public bool isMoving = false;
 
@@ -21,6 +21,7 @@ public class CharacterMover : MonoBehaviour
         transform.position = startPosition;
         AnimateIdle();
     }
+
     private void Update()
     {
         if (isMoving)
@@ -36,15 +37,6 @@ public class CharacterMover : MonoBehaviour
     public void MoveTo(Vector3 targetPosition)
     {
         targetPosition.z = 7.63f;
-        if (targetPosition.x == -1.5f)
-        {
-            spriteRenderer.flipX = true;
-            targetPosition.x = -1.5f;
-        }
-        else
-        {
-            spriteRenderer.flipX = false;
-        }
 
         if (targetPosition.x < -0.6f)
         {
@@ -54,9 +46,8 @@ public class CharacterMover : MonoBehaviour
         {
             targetPosition.x = -0.095f;
         }
-        StartCoroutine(MoveRoutine(targetPosition));
-        
 
+        StartCoroutine(MoveRoutine(targetPosition));
     }
 
     private IEnumerator MoveRoutine(Vector3 targetPosition)
@@ -65,30 +56,27 @@ public class CharacterMover : MonoBehaviour
         int targetFloor = GetFloor(targetPosition.y);
         float floorY = GetFloorY(targetFloor);
 
-        if(transform.position == startPosition )
+        if (transform.position == startPosition)
         {
-            yield return StartCoroutine(MoveToPosition(new Vector3(0.597f, 7.084f,8.248f)));
+            yield return StartCoroutine(MoveToPosition(new Vector3(0.597f, 7.084f, 8.248f)));
         }
-        
 
         if (currentFloor == targetFloor)
         {
+            AdjustSpriteDirection(targetPosition.x);
             yield return StartCoroutine(MoveToPosition(new Vector3(targetPosition.x, floorY, targetPosition.z)));
-            
         }
         else
         {
-            // Двигаемся к лифту
+            AdjustSpriteDirection(elevatorPosition.x);
             yield return StartCoroutine(MoveToPosition(new Vector3(elevatorPosition.x, transform.position.y, elevatorPosition.z)));
             
-            // Поднимаемся на нужный этаж
             Vector3 elevatorTarget = new Vector3(elevatorPosition.x, floorY, elevatorPosition.z);
             yield return StartCoroutine(MoveToPosition(elevatorTarget));
             
-            // Двигаемся к целевой точке
+            AdjustSpriteDirection(targetPosition.x);
             Vector3 finalPosition = new Vector3(targetPosition.x, floorY, targetPosition.z);
             yield return StartCoroutine(MoveToPosition(finalPosition));
-            
         }
 
         isMoving = false;
@@ -106,8 +94,14 @@ public class CharacterMover : MonoBehaviour
             cameraMoveOnTrigger.transform.position = Vector3.MoveTowards(cameraMoveOnTrigger.transform.position, cameraTargetPosition, CameraMoveSpeed * Time.deltaTime);
             yield return null;
         }
-        transform.position = target; // Фиксируем точное положение
+        transform.position = target;
     }
+
+    private void AdjustSpriteDirection(float targetX)
+    {
+        spriteRenderer.flipX = targetX < transform.position.x;
+    }
+
     private int GetFloor(float yPosition)
     {
         if (yPosition < 8f) return 1;
@@ -132,28 +126,23 @@ public class CharacterMover : MonoBehaviour
 
     private void AnimateWalk()
     {
-        // Обновляем таймер
         frameTimer += Time.deltaTime;
-
-        // Меняем кадр, если прошло достаточно времени
         if (frameTimer >= frameRate)
         {
-            frameTimer = 0f; // Сбрасываем таймер
-            currentFrame = (currentFrame + 1) % walkSprites.Length; // Переходим к следующему кадру
-            spriteRenderer.sprite = walkSprites[currentFrame]; // Устанавливаем текущий кадр
+            frameTimer = 0f;
+            currentFrame = (currentFrame + 1) % walkSprites.Length;
+            spriteRenderer.sprite = walkSprites[currentFrame];
         }
     }
 
     public void AnimateIdle()
     {
         frameTimer += Time.deltaTime;
-
-        // Меняем кадр, если прошло достаточно времени
         if (frameTimer >= frameRate)
         {
-            frameTimer = 0f; // Сбрасываем таймер
-            currentFrame = (currentFrame + 1) % idleSprites.Length; // Переходим к следующему кадру
-            spriteRenderer.sprite = idleSprites[currentFrame]; // Устанавливаем текущий кадр
+            frameTimer = 0f;
+            currentFrame = (currentFrame + 1) % idleSprites.Length;
+            spriteRenderer.sprite = idleSprites[currentFrame];
         }
     }
 }

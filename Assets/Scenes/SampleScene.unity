@@ -12453,6 +12453,7 @@ GameObject:
   - component: {fileID: 1538763940}
   - component: {fileID: 1538763939}
   - component: {fileID: 1538763941}
+  - component: {fileID: 1538763942}
   m_Layer: 0
   m_Name: Audio Source
   m_TagString: Untagged
@@ -12584,6 +12585,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 1538763939}
+--- !u!114 &1538763942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1538763938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 817cc6485e03be64aa8ad31cc2ba194d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 1538763939}
+  volumeSlider: {fileID: 0}
 --- !u!1 &1549988457
 GameObject:
   m_ObjectHideFlags: 0
@@ -13669,7 +13684,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b31a5efa66425248a3e909b33fae440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioControl: {fileID: 0}
+  audioControl: {fileID: 1538763942}
 --- !u!1 &1663923669
 GameObject:
   m_ObjectHideFlags: 0
@@ -20794,7 +20809,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 66c21825a98ae284fb9a2e41dce16e43, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 7.5, y: 20.1}
@@ -20929,7 +20944,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 51a7f2ddb74213e4cbb9aa510b0e9f72, type: 3}
   - {fileID: 21300000, guid: d36072bc3ef6a0f4db742edc6ae01ba7, type: 3}
   spriteRenderer: {fileID: 2120715762}
-  moveSpeed: 0.5
+  moveSpeed: 0.75
   isMoving: 0
 --- !u!1 &2125357422
 GameObject:
