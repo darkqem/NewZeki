@@ -5454,7 +5454,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b31a5efa66425248a3e909b33fae440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioControl: {fileID: 0}
+  audioControl: {fileID: 1538763942}
 --- !u!114 &699732706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8002,7 +8002,7 @@ Skybox:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
-  m_CustomSkybox: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_CustomSkybox: {fileID: 2100000, guid: 5cfbc7c31120821468fab293616da9a6, type: 2}
 --- !u!1 &983604544
 GameObject:
   m_ObjectHideFlags: 0
