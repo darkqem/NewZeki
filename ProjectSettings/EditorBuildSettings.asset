@@ -4,23 +4,5 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/MAIN MENU.unity
-    guid: 7ea3d87b5cf204c429ac6d0192a81228
-  - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
-    path: "Assets/Scenes/\u0428\u0410\u041C\u0410\u041D \u0414\u0418\u0410\u041B\u041E\u0413.unity"
-    guid: 91eaaa3c239c85649b0b33651a97e01b
-<<<<<<< Updated upstream
-=======
-  - enabled: 1
-    path: Assets/Scenes/SampleScene night.unity
-    guid: 75101ca5ec9dfba4399881a3d84f7285
-  - enabled: 1
-    path: "Assets/Scenes/\u041F\u0440\u0438\u0448\u043B\u0435\u043D\u0435\u0446 \u0434\u0438\u0430\u043B\u043E\u0433.unity"
-    guid: c0b8de7ce1311e94493cfae278de7eba
->>>>>>> Stashed changes
+  m_Scenes: []
   m_configObjects: {}
