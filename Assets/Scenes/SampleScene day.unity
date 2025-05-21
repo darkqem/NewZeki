@@ -2323,7 +2323,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b31a5efa66425248a3e909b33fae440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioControl: {fileID: 0}
 --- !u!1 &265222919
 GameObject:
   m_ObjectHideFlags: 0
@@ -5464,7 +5463,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b31a5efa66425248a3e909b33fae440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioControl: {fileID: 1538763942}
 --- !u!114 &699732706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5706,7 +5704,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b31a5efa66425248a3e909b33fae440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioControl: {fileID: 1538763942}
 --- !u!1 &712491001
 GameObject:
   m_ObjectHideFlags: 0
@@ -6899,7 +6896,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6dfe996952f914488f7188cab3556b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frameRate: 0.75
+  animationSpeed: 0.25
   idleSprites:
   - {fileID: 21300000, guid: fbdc25ab97a4d624c9b750ca7479dcf1, type: 3}
   - {fileID: 21300000, guid: 9e92704c70e8be1408404ec30189c756, type: 3}
@@ -7502,7 +7499,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6dfe996952f914488f7188cab3556b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frameRate: 0.68
+  animationSpeed: 0.25
   idleSprites:
   - {fileID: 21300000, guid: 074ff6b41a6c9e647871a7e540a1aec6, type: 3}
   - {fileID: 21300000, guid: 29bce059bc220334787b8608e5f2e0a0, type: 3}
@@ -11998,7 +11995,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6dfe996952f914488f7188cab3556b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frameRate: 0.1
+  animationSpeed: 1
   idleSprites:
   - {fileID: 21300000, guid: b670e1855aa647c419884ea1f0dffe78, type: 3}
   - {fileID: 21300000, guid: 2d5dc12163fe2e24ab9b1c373ceee24e, type: 3}
@@ -13938,7 +13935,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b31a5efa66425248a3e909b33fae440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioControl: {fileID: 1538763942}
 --- !u!1 &1663923669
 GameObject:
   m_ObjectHideFlags: 0
