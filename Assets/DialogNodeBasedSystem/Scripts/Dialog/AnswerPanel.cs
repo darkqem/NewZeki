@@ -10,9 +10,22 @@ namespace cherrydev
     {
         [SerializeField] private Button _answerButtonPrefab;
         [SerializeField] private Transform _parentTransform;
+        public TMP_FontAsset _customFont;
 
         private readonly List<Button> _buttons = new();
         private readonly List<TextMeshProUGUI> _buttonTexts = new();
+
+        private void Awake()
+        {
+            if (_customFont == null)
+            {
+                _customFont = Resources.Load<TMP_FontAsset>("Fonts/Oswald-VariableFont_wght SDF");
+                if (_customFont == null)
+                {
+                    Debug.LogWarning("Could not load Oswald font asset!");
+                }
+            }
+        }
 
         /// <summary>
         /// Instantiate answer buttons based on max amount of answer buttons
@@ -25,9 +38,15 @@ namespace cherrydev
             for (int i = 0; i < maxAmountOfAnswerButtons; i++)
             {
                 Button answerButton = Instantiate(_answerButtonPrefab, _parentTransform);
+                TextMeshProUGUI buttonText = answerButton.GetComponentInChildren<TextMeshProUGUI>();
+                
+                if (_customFont != null && buttonText != null)
+                {
+                    buttonText.font = _customFont;
+                }
 
                 _buttons.Add(answerButton);
-                _buttonTexts.Add(answerButton.GetComponentInChildren<TextMeshProUGUI>());
+                _buttonTexts.Add(buttonText);
             }
         }
 
