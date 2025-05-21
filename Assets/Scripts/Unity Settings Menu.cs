@@ -6,8 +6,10 @@ using TMPro;
 
 public class SettingsMenu : MonoBehaviour
 {
+    public AudioMixer audioMixer;
     public TMP_Dropdown resolutionDropdown;
     public Toggle fullscreenToggle;
+    public Slider volumeSlider;
     
     private Resolution[] resolutions;
 
@@ -41,7 +43,11 @@ public class SettingsMenu : MonoBehaviour
         fullscreenToggle.isOn = Screen.fullScreen;
         fullscreenToggle.onValueChanged.AddListener(SetFullscreen);
 
-        
+        // Настройка громкости
+        float volume;
+        audioMixer.GetFloat("MasterVolume", out volume);
+        volumeSlider.value = volume;
+        volumeSlider.onValueChanged.AddListener(SetVolume);
     }
 
     public void SetResolution(int resolutionIndex)
@@ -55,5 +61,8 @@ public class SettingsMenu : MonoBehaviour
         Screen.fullScreen = isFullscreen;
     }
 
-    
+    public void SetVolume(float volume)
+    {
+        audioMixer.SetFloat("MasterVolume", volume);
+    }
 }

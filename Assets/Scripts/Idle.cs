@@ -6,9 +6,8 @@ using UnityEngine.U2D.Animation;
 public class Idle : MonoBehaviour
 {
     private int currentFrame = 0; // Текущий кадр анимации
-    public float frameRate = 0.1f; // Скорость смены кадров
+    private float frameRate = 0.1f; // Скорость смены кадров
     private float frameTimer = 0f; // Таймер для анимации
-    private float timefreezed = 0.5f;
     public Sprite[] idleSprites;
     public SpriteRenderer spriteRenderer;
     // Start is called before the first frame update
