@@ -515,7 +515,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 404726945}
-  - component: {fileID: 404726946}
   m_Layer: 0
   m_Name: windiw
   m_TagString: Untagged
@@ -539,18 +538,6 @@ Transform:
   - {fileID: 2098798584}
   m_Father: {fileID: 938480610}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &404726946
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 404726944}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 842a1f6666b17174d9bd3b435bf0a27b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &463074588
 GameObject:
   m_ObjectHideFlags: 0
@@ -1216,6 +1203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6dfe996952f914488f7188cab3556b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationSpeed: 1
   idleSprites:
   - {fileID: 21300000, guid: 7fec1b258d87eb9478a22f7fb2a958f7, type: 3}
   - {fileID: 21300000, guid: 423a6292d61a954469d6fe4a193bb2b7, type: 3}
@@ -1261,6 +1249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6dfe996952f914488f7188cab3556b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationSpeed: 1
   idleSprites:
   - {fileID: 21300000, guid: b670e1855aa647c419884ea1f0dffe78, type: 3}
   - {fileID: 21300000, guid: 2d5dc12163fe2e24ab9b1c373ceee24e, type: 3}
@@ -1421,9 +1410,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogBehaviour: {fileID: 1873595393}
-  dialogGraphs:
-  - {fileID: 11400000, guid: 20891bf15fb2762448a1ac015947acee, type: 2}
-  - {fileID: 11400000, guid: d3d196cda9d157f42961b26b35903b7e, type: 2}
+  dialogGraph: {fileID: 11400000, guid: 97c0213243de83d4b9c57016f81bbe42, type: 2}
 --- !u!4 &1479155835
 Transform:
   m_ObjectHideFlags: 0
