@@ -95,6 +95,15 @@ public class CharacterMover : MonoBehaviour
         while (Vector3.Distance(transform.position, target) > 0.05f)
         {
             isMoving = true;
+            // Определяем направление движения и флипаем спрайт
+            if (target.x < transform.position.x)
+            {
+                spriteRenderer.flipX = true;
+            }
+            else if (target.x > transform.position.x)
+            {
+                spriteRenderer.flipX = false;
+            }
             transform.position = Vector3.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
             float CameraMoveSpeed = 2F;
             Vector3 cameraTargetPosition = transform.position;
