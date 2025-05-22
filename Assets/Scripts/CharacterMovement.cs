@@ -5,6 +5,7 @@ public class CharacterMover : MonoBehaviour
 {
     public Vector3 startPosition = new Vector3(1.183f, 7.084f, 8.248f);
     public Vector3 elevatorPosition = new Vector3(-0.717f, 7.084f, 10.125f);
+    public Vector3 doorPosition = new Vector3(0.563f, 7.084f, 8.248f);
     public PanelManager panelManagerScript;
     public GameObject cameraMoveOnTrigger;
     public Sprite[] walkSprites; // Массив спрайтов для ходьбы
@@ -65,7 +66,12 @@ public class CharacterMover : MonoBehaviour
         int targetFloor = GetFloor(targetPosition.y);
         float floorY = GetFloorY(targetFloor);
 
-        
+        // Check if we're starting from the start position
+        if (Vector3.Distance(transform.position, startPosition) < 0.05f)
+        {
+            // First move to the door position
+            yield return StartCoroutine(MoveToPosition(doorPosition));
+        }
 
         if (currentFloor == targetFloor)
         {

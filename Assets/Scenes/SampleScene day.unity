@@ -7220,6 +7220,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1a4abeeb1acd6a5409f0ac25df683c90, type: 3}
   - {fileID: 21300000, guid: 788af488b0fe7bd4ea80b8aa7dc8ac64, type: 3}
   spriteRenderer: {fileID: 0}
+  animationSpeed: 0.25
 --- !u!114 &826539259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7825,6 +7826,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: a244d64be697b9d4aaa3b9959d86a357, type: 3}
   - {fileID: 21300000, guid: a608f09b0a53c9d429a480bf34c337ea, type: 3}
   spriteRenderer: {fileID: 0}
+  animationSpeed: 0.25
 --- !u!114 &952636864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12341,6 +12343,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 8ac2a8b296be6b846bfe05708208fe79, type: 3}
   - {fileID: 21300000, guid: 198e357240bc0e9439bc7fc66a8bac31, type: 3}
   spriteRenderer: {fileID: 0}
+  animationSpeed: 1
 --- !u!114 &1467671546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16562,7 +16565,7 @@ Transform:
   m_GameObject: {fileID: 2120715760}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.72, y: 7.087, z: 9.5698}
+  m_LocalPosition: {x: 0.563, y: 7.084, z: 8.248}
   m_LocalScale: {x: 0.025918832, y: 0.025918832, z: 0.025918832}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -16660,6 +16663,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startPosition: {x: 1.183, y: 7.084, z: 8.248}
   elevatorPosition: {x: -0.717, y: 7.084, z: 10.162}
+  doorPosition: {x: 0.563, y: 7.084, z: 8.248}
   panelManagerScript: {fileID: 342006512}
   cameraMoveOnTrigger: {fileID: 963194225}
   walkSprites:
