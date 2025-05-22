@@ -10,6 +10,7 @@ namespace cherrydev
     {
         [SerializeField] private Button _answerButtonPrefab;
         [SerializeField] private Transform _parentTransform;
+        [SerializeField] private TMP_FontAsset _customFont;
 
         private readonly List<Button> _buttons = new();
         private readonly List<TextMeshProUGUI> _buttonTexts = new();
@@ -25,9 +26,15 @@ namespace cherrydev
             for (int i = 0; i < maxAmountOfAnswerButtons; i++)
             {
                 Button answerButton = Instantiate(_answerButtonPrefab, _parentTransform);
+                TextMeshProUGUI buttonText = answerButton.GetComponentInChildren<TextMeshProUGUI>();
+                
+                if (_customFont != null && buttonText != null)
+                {
+                    buttonText.font = _customFont;
+                }
 
                 _buttons.Add(answerButton);
-                _buttonTexts.Add(answerButton.GetComponentInChildren<TextMeshProUGUI>());
+                _buttonTexts.Add(buttonText);
             }
         }
 

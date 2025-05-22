@@ -4,14 +4,17 @@ using UnityEngine;
 [Serializable]
 public class GameSaveData
 {
-    public int currentDay;
-    public bool dialogShownToday;
-    public int lastShownDialogIndex;
-
+    // Данные о днях
+    public int currentDay = 1;
+    public bool dialogShownToday = false;
+    public int lastShownDialogIndex = -1;
+    
+    // Конструктор для создания нового сохранения с начальными значениями
     public GameSaveData()
     {
         currentDay = 1;
         dialogShownToday = false;
         lastShownDialogIndex = -1;
+        // Добавьте здесь инициализацию других параметров игры
     }
 } 

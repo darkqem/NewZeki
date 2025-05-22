@@ -2,6 +2,7 @@ using UnityEngine;
 using System.IO;
 using UnityEngine.Events;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class GameManager : MonoBehaviour
 
     private GameSaveData saveData;
     private string savePath;
+
+    [SerializeField] private DialogueManager dialogueManager;
 
     private void Awake()
     {
@@ -131,5 +134,47 @@ public class GameManager : MonoBehaviour
             saveData = new GameSaveData();
             Debug.Log("Создано новое сохранение");
         }
+    }
+
+    // Метод для начала новой игры
+    public void StartNewGame()
+    {
+        // Сбрасываем все данные сохранения
+        saveData = new GameSaveData();
+        
+        // Сбрасываем прогресс диалогов
+        if (dialogueManager != null)
+        {
+            dialogueManager.ResetProgress();
+        }
+        
+        // Удаляем файл сохранения, если он существует
+        if (File.Exists(savePath))
+        {
+            File.Delete(savePath);
+        }
+        
+        // Сохраняем новое пустое состояние игры
+        SaveGame();
+        
+        // Загружаем начальную сцену
+        SceneManager.LoadScene("GameScene");
+    }
+    
+    // Метод для продолжения игры (загрузка сохранённого прогресса)
+    public void ContinueGame()
+    {
+        // Здесь можно добавить загрузку сохранённого прогресса
+        SceneManager.LoadScene("GameScene");
+    }
+    
+    // Метод для выхода из игры
+    public void QuitGame()
+    {
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #else
+            Application.Quit();
+        #endif
     }
 } 
