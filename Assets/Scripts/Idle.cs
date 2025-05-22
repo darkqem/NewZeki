@@ -10,6 +10,8 @@ public class Idle : MonoBehaviour
     private float frameTimer = 0f; // Таймер для анимации
     public Sprite[] idleSprites;
     public SpriteRenderer spriteRenderer;
+    public float animationSpeed = 1f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +26,7 @@ public class Idle : MonoBehaviour
 
     public void AnimateIdle()
     {
-        frameTimer += Time.deltaTime;
+        frameTimer += Time.deltaTime * animationSpeed;
 
         // Меняем кадр, если прошло достаточно времени
         if (frameTimer >= frameRate)
