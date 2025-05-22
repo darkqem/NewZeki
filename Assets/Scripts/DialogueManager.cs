@@ -16,6 +16,9 @@ public class DialogueManager : MonoBehaviour
     private int currentGameDay; // Текущий игровой день
     private int currentDialogIndex; // Текущий индекс диалога
     private bool wasDialogViewedToday; // Флаг для отслеживания просмотра диалога в текущий день
+    private bool waitingForTransitionClick = false;
+    private bool waitingForTransition1Click = false;
+    private System.Action pendingTransition = null;
     
     private void Start()
     {
@@ -29,6 +32,20 @@ public class DialogueManager : MonoBehaviour
         if (showDialogOnStart)
         {
             ShowDialogue();
+        }
+    }
+    
+    private void Update()
+    {
+        if ((waitingForTransitionClick || waitingForTransition1Click) && Input.GetMouseButtonDown(0))
+        {
+            if (pendingTransition != null)
+            {
+                pendingTransition.Invoke();
+                pendingTransition = null;
+            }
+            waitingForTransitionClick = false;
+            waitingForTransition1Click = false;
         }
     }
     
@@ -51,8 +68,18 @@ public class DialogueManager : MonoBehaviour
             wasDialogViewedToday = false;
         }
 
-        dialogBehaviour.BindExternalFunction("Transition", () => sceneTransition.Transition(scneneNumber));
-        dialogBehaviour.BindExternalFunction("Transition1", () => sceneTransition1.Transition1(scneneNumber1));
+        dialogBehaviour.BindExternalFunction("Transition", () => {
+            waitingForTransitionClick = true;
+            pendingTransition = () => sceneTransition.Transition(scneneNumber);
+            Debug.Log("Click to proceed with Transition");
+        });
+
+        dialogBehaviour.BindExternalFunction("Transition1", () => {
+            waitingForTransition1Click = true;
+            pendingTransition = () => sceneTransition1.Transition1(scneneNumber1);
+            Debug.Log("Click to proceed with Transition1");
+        });
+
         // Показываем текущий диалог
         dialogBehaviour.StartDialog(dialogGraphs[currentDialogIndex]);
         wasDialogViewedToday = true;

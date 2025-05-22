@@ -233,9 +233,9 @@ public class BlackjackGame : MonoBehaviour
     void EndGame(bool playerWins)
     {
         if (playerScore > 21)
-            resultText.text = "Перебор! Вы проиграли!";
+            resultText.text = "Вы проиграли!";
         else if (dealerScore > 21)
-            resultText.text = "Дилер перебрал! Вы выиграли!";
+            resultText.text = "Вы выиграли!";
         else if (playerWins)
             resultText.text = "Вы выиграли!";
         else if (playerScore == dealerScore)
