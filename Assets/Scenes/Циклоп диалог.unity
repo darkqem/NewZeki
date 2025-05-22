@@ -1652,8 +1652,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 50e2c6e1499d20e4c978bb605b6626db, type: 2}
   characterId: "\u0426\u0438\u043A\u043B\u043E\u043F"
   sceneTransition: {fileID: 2073896532}
+  sceneTransition1: {fileID: 2073896533}
   showDialogOnStart: 1
   scneneNumber: 6
+  scneneNumber1: 7
 --- !u!4 &1725808656
 Transform:
   m_ObjectHideFlags: 0
@@ -1790,6 +1792,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2073896531}
   - component: {fileID: 2073896532}
+  - component: {fileID: 2073896533}
   m_Layer: 0
   m_Name: babube
   m_TagString: Untagged
@@ -1822,6 +1825,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b31a5efa66425248a3e909b33fae440, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2073896533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2073896529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86300ca5a855e0c4e906320c0cf94ba1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2117386884
