@@ -1,13 +1,16 @@
 using UnityEngine;
 using cherrydev;
+using UnityEditor.SearchService;
+using UnityEngine.SceneManagement;
 
 public class DialogueManager : MonoBehaviour
 {
     [SerializeField] private DialogBehaviour dialogBehaviour;
     [SerializeField] private DialogNodeGraph[] dialogGraphs;
     [SerializeField] private string characterId;
+    [SerializeField] private Scenes sceneTransition;
     [SerializeField] private bool showDialogOnStart = true; // Флаг для автоматического показа диалога при старте
-    
+    public int scneneNumber = 6;
     private int currentGameDay; // Текущий игровой день
     private int currentDialogIndex; // Текущий индекс диалога
     private bool wasDialogViewedToday; // Флаг для отслеживания просмотра диалога в текущий день
@@ -46,6 +49,7 @@ public class DialogueManager : MonoBehaviour
             wasDialogViewedToday = false;
         }
 
+        dialogBehaviour.BindExternalFunction("Transition", () => sceneTransition.Transition(scneneNumber));
         // Показываем текущий диалог
         dialogBehaviour.StartDialog(dialogGraphs[currentDialogIndex]);
         wasDialogViewedToday = true;
