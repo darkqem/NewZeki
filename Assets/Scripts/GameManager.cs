@@ -22,16 +22,31 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-            InitializeGame();
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        Instance = this;
+        InitializeGame();
+        
+        // Подписываемся на события смены сцены
+        SceneManager.sceneUnloaded += OnSceneUnloaded;
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDestroy()
+    {
+        // Отписываемся от событий при уничтожении объекта
+        SceneManager.sceneUnloaded -= OnSceneUnloaded;
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneUnloaded(Scene scene)
+    {
+        // Сохраняем данные перед выгрузкой сцены
+        SaveGame();
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Загружаем данные при загрузке новой сцены
+        LoadGame();
     }
 
     private void InitializeGame()
