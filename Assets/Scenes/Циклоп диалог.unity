@@ -1698,6 +1698,7 @@ MonoBehaviour:
   dialogGraphs:
   - {fileID: 11400000, guid: ba2b57af5d7d8224ba35ed63cc6a77d6, type: 2}
   - {fileID: 11400000, guid: 50e2c6e1499d20e4c978bb605b6626db, type: 2}
+  - {fileID: 11400000, guid: 6acd871f9cab4614691aa4cd7e4069fd, type: 2}
   characterId: "\u0426\u0438\u043A\u043B\u043E\u043F"
   sceneTransition: {fileID: 2073896532}
   sceneTransition1: {fileID: 2073896533}
