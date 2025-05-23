@@ -5963,7 +5963,6 @@ GameObject:
   - component: {fileID: 703632528}
   - component: {fileID: 703632527}
   - component: {fileID: 703632526}
-  - component: {fileID: 703632529}
   - component: {fileID: 703632530}
   m_Layer: 5
   m_Name: "\u0417\u0430\u043A\u043E\u043D\u0447\u0438\u0442\u044C \u0434\u0435\u043D\u044C"
@@ -6036,10 +6035,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 703632529}
-        m_TargetAssemblyTypeName: Scenes, Assembly-CSharp
-        m_MethodName: Transition
-        m_Mode: 3
+      - m_Target: {fileID: 703632530}
+        m_TargetAssemblyTypeName: EndDayButton, Assembly-CSharp
+        m_MethodName: StartEndDaySequence
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -6086,18 +6085,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 703632524}
   m_CullTransparentMesh: 1
---- !u!114 &703632529
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 703632524}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b31a5efa66425248a3e909b33fae440, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &703632530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6110,6 +6097,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61cee467236e66a4c98689f34ca00d80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dailyScenes: 0300000009000000
+  returnToMainScene: 1
+  mainSceneIndex: 1
+  delayBeforeReturn: 2
 --- !u!1 &712491001
 GameObject:
   m_ObjectHideFlags: 0
