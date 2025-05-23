@@ -17,10 +17,13 @@ public class BlackjackGame : MonoBehaviour
     [Header("UI элементы")]
     public Text playerScoreText;
     public Text dealerScoreText;
-    public Text resultText;
     public Button hitButton;
     public Button standButton;
     public Button playAgainButton;
+    
+    [Header("Результат игры")]
+    public GameObject winObject;
+    public GameObject loseObject;
 
     private List<Card> deck = new List<Card>();
     private List<Card> playerCards = new List<Card>();
@@ -35,6 +38,10 @@ public class BlackjackGame : MonoBehaviour
 
     void InitializeGame()
     {
+        // Скрываем объекты результата
+        if (winObject != null) winObject.SetActive(false);
+        if (loseObject != null) loseObject.SetActive(false);
+        
         // Очищаем старые карты
         ClearCards();
         
@@ -51,7 +58,6 @@ public class BlackjackGame : MonoBehaviour
         hitButton.interactable = true;
         standButton.interactable = true;
         playAgainButton.gameObject.SetActive(false);
-        resultText.text = "";
     }
 
     void CreateDeck()
@@ -186,8 +192,8 @@ public class BlackjackGame : MonoBehaviour
         }
         Debug.Log($"Общий счет дилера: {dealerScore}");
 
-        playerScoreText.text = "Игрок: " + playerScore;
-        dealerScoreText.text = "Дилер: " + dealerScore;
+        playerScoreText.text = "" + playerScore;
+        dealerScoreText.text = "" + dealerScore;
 
         if (playerScore > 21)
         {
@@ -233,15 +239,30 @@ public class BlackjackGame : MonoBehaviour
     void EndGame(bool playerWins)
     {
         if (playerScore > 21)
-            resultText.text = "Вы проиграли!";
+        {
+            if (loseObject != null) loseObject.SetActive(true);
+            if (winObject != null) winObject.SetActive(false);
+        }
         else if (dealerScore > 21)
-            resultText.text = "Вы выиграли!";
+        {
+            if (winObject != null) winObject.SetActive(true);
+            if (loseObject != null) loseObject.SetActive(false);
+        }
         else if (playerWins)
-            resultText.text = "Вы выиграли!";
+        {
+            if (winObject != null) winObject.SetActive(true);
+            if (loseObject != null) loseObject.SetActive(false);
+        }
         else if (playerScore == dealerScore)
-            resultText.text = "Ничья!";
+        {
+            if (winObject != null) winObject.SetActive(false);
+            if (loseObject != null) loseObject.SetActive(false);
+        }
         else
-            resultText.text = "Вы проиграли!";
+        {
+            if (loseObject != null) loseObject.SetActive(true);
+            if (winObject != null) winObject.SetActive(false);
+        }
 
         hitButton.interactable = false;
         standButton.interactable = false;

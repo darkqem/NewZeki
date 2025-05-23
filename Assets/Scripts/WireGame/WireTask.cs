@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class WireTask : MonoBehaviour
 {
@@ -181,8 +183,27 @@ public class WireTask : MonoBehaviour
     {
         if (completedConnections >= wireConnections.Count)
         {
-            Debug.Log("All wires connected! Task completed!");
-            // Here you can add your completion logic
+            StartCoroutine(ReturnToPreviousScene());
+        }
+    }
+
+    private IEnumerator ReturnToPreviousScene()
+    {
+        yield return new WaitForSeconds(1f);
+        string previousScene = PlayerPrefs.GetString("PreviousScene");
+        if (!string.IsNullOrEmpty(previousScene))
+        {
+            SceneManager.LoadScene(previousScene);
+        }
+    }
+
+    // Добавьте метод для отмены игры (например, при нажатии кнопки "Отмена" или "Назад")
+    public void CancelGame()
+    {
+        string previousScene = PlayerPrefs.GetString("PreviousScene");
+        if (!string.IsNullOrEmpty(previousScene))
+        {
+            SceneManager.LoadScene(previousScene);
         }
     }
 } 

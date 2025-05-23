@@ -13,6 +13,10 @@ public class ShellGameController : MonoBehaviour
     public float liftSpeed = 3f;  // Скорость подъема
     public Button playAgainButton; // Кнопка "Сыграть снова"
 
+    [Header("Результат игры")]
+    public GameObject winObject; // Объект для показа победы
+    public GameObject loseObject; // Объект для показа поражения
+
     private const int WINNING_SHELL_INDEX = 1; // Всегда выигрышный напёрсток с индексом 1
     private bool canChoose = false;
     private bool isMoving = false;
@@ -34,11 +38,19 @@ public class ShellGameController : MonoBehaviour
             playAgainButton.gameObject.SetActive(false); // Скрываем кнопку в начале игры
         }
         
+        // Скрываем объекты результата
+        if (winObject != null) winObject.SetActive(false);
+        if (loseObject != null) loseObject.SetActive(false);
+        
         StartGame();
     }
 
     public void StartGame()
     {
+        // Скрываем объекты результата при начале новой игры
+        if (winObject != null) winObject.SetActive(false);
+        if (loseObject != null) loseObject.SetActive(false);
+        
         // Скрываем кнопку "Сыграть снова" при начале новой игры
         if (playAgainButton != null)
         {
@@ -240,10 +252,14 @@ public class ShellGameController : MonoBehaviour
         // Показываем результат
         if (chosenIndex == WINNING_SHELL_INDEX)
         {
+            if (winObject != null) winObject.SetActive(true);
+            if (loseObject != null) loseObject.SetActive(false);
             Debug.Log("Угадал! Шарик был под напёрстком " + chosenIndex);
         }
         else
         {
+            if (loseObject != null) loseObject.SetActive(true);
+            if (winObject != null) winObject.SetActive(false);
             Debug.Log("Не угадал! Шарик был под напёрстком " + WINNING_SHELL_INDEX);
         }
 
