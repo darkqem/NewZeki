@@ -10,6 +10,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private Scenes sceneTransition;
     [SerializeField] private Scenes1 sceneTransition1;
 
+    [SerializeField] private GameManager gameManager;
     [SerializeField] private bool showDialogOnStart = true; // Флаг для автоматического показа диалога при старте
     public int scneneNumber = 6;
     public int scneneNumber1 = 7;
@@ -79,8 +80,12 @@ public class DialogueManager : MonoBehaviour
             pendingTransition = () => sceneTransition1.Transition1(scneneNumber1);
             Debug.Log("Click to proceed with Transition1");
         });
-        
-        
+
+        dialogBehaviour.BindExternalFunction("StartNewGame", () => {
+            waitingForTransition1Click = true;
+            gameManager.StartNewGame();
+            Debug.Log("Click to proceed with StartNewGame");
+        });
 
         // Показываем текущий диалог
         dialogBehaviour.StartDialog(dialogGraphs[currentDialogIndex]);
