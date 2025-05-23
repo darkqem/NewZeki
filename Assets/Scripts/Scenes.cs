@@ -12,7 +12,7 @@ public class Scenes : MonoBehaviour
             SceneTransitionManager.Instance.LoadScene(sceneNumber);
         }
         else
-        {
+    {
             SceneManager.LoadScene(sceneNumber);
         }
     }
