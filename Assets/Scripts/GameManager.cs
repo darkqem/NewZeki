@@ -165,7 +165,7 @@ public class GameManager : MonoBehaviour
     public void ContinueGame()
     {
         // Здесь можно добавить загрузку сохранённого прогресса
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("SampleScene day");
     }
     
     // Метод для выхода из игры
