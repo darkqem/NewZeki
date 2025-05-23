@@ -42,8 +42,16 @@ public class MoleManager : MonoBehaviour
 
     void TransitionToNextScene()
     {
-        
-        SceneManager.LoadScene(nextSceneNumber);
+        // Используем SceneTransitionManager для плавного перехода если он доступен
+        if (SceneTransitionManager.Instance != null)
+        {
+            SceneTransitionManager.Instance.LoadScene(nextSceneNumber);
+        }
+        else
+        {
+            // Если SceneTransitionManager недоступен, используем стандартный переход
+            SceneManager.LoadScene(nextSceneNumber);
+        }
     }
 
     void TrySpawnMole()

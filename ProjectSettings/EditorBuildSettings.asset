@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WireGame.unity
     guid: b7cf3a79540806b479c5ea33826fba3d
+  - enabled: 1
+    path: Assets/Scenes/NightWireConnection.unity
+    guid: 71a2320cb7e81244fa480cf1acc3fb29
   m_configObjects: {}
