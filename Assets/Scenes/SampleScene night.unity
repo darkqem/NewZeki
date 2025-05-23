@@ -2229,7 +2229,6 @@ MonoBehaviour:
   - {fileID: 900227532}
   - {fileID: 488550281}
   - {fileID: 1187473281}
-  audioControl: {fileID: 0}
   nextSceneNumber: 1
 --- !u!4 &986391103
 Transform:
