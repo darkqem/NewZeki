@@ -5,7 +5,7 @@ public class MoleManager : MonoBehaviour
 {
     public MoleSlot[] slots;
     private int frameCounter = 0;
-    public AudioVolumeControl audioControl;
+    
     public int nextSceneNumber = 1;
     private bool transitionStarted = false;
 
@@ -42,7 +42,7 @@ public class MoleManager : MonoBehaviour
 
     void TransitionToNextScene()
     {
-        audioControl.SaveVolume();
+        
         SceneManager.LoadScene(nextSceneNumber);
     }
 
