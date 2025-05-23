@@ -46,7 +46,7 @@ public class SceneTransitionManager : MonoBehaviour
         canvasObj.transform.parent = transform;
         Canvas canvas = canvasObj.AddComponent<Canvas>();
         canvas.renderMode = RenderMode.ScreenSpaceOverlay;
-        canvas.sortingOrder = 999; // Поверх всего UI
+        canvas.sortingOrder = 999999999; // Поверх всего UI
         
         // Добавляем CanvasScaler для корректного масштабирования
         CanvasScaler scaler = canvasObj.AddComponent<CanvasScaler>();

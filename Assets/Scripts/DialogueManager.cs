@@ -1,7 +1,6 @@
 using UnityEngine;
 using cherrydev;
-using UnityEditor.SearchService;
-using UnityEngine.SceneManagement;
+
 
 public class DialogueManager : MonoBehaviour
 {
