@@ -111,7 +111,7 @@ public class PrisonerFilesManager : MonoBehaviour
             
             if (pageNumberText != null)
             {
-                pageNumberText.text = $"Досье {currentFileIndex + 1}/{prisonerFiles.Length}";
+                pageNumberText.text = $"{currentFileIndex + 1}/{prisonerFiles.Length}";
             }
 
             // Обновляем доступность кнопок навигации
