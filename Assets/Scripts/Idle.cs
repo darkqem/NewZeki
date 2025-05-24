@@ -12,13 +12,11 @@ public class Idle : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public float animationSpeed = 1f;
 
-    // Start is called before the first frame update
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         AnimateIdle();

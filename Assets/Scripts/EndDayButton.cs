@@ -8,6 +8,10 @@ public class EndDayButton : MonoBehaviour
     [Tooltip("Массив индексов сцен, которые будут показаны в разные дни")]
     [SerializeField] private int[] dailyScenes;
     
+    [Header("Game Settings")]
+    [Tooltip("Последний день игры")]
+    [SerializeField] private int finalDay = 3;
+    
     [Header("Transition Settings")]
     [Tooltip("Возвращаться ли к основной сцене после показа специальной сцены")]
     [SerializeField] private bool returnToMainScene = true;
@@ -30,11 +34,45 @@ public class EndDayButton : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        // Проверяем текущий день при активации
+        if (GameManager.Instance != null)
+        {
+            int currentDay = GameManager.Instance.GetCurrentDay();
+            // Если текущий день - последний, деактивируем кнопку
+            if (currentDay >= finalDay)
+            {
+                if (endDayButton != null)
+                {
+                    endDayButton.interactable = false;
+                }
+                return;
+            }
+        }
+
+        // В остальных случаях активируем кнопку
+        if (endDayButton != null)
+        {
+            endDayButton.interactable = true;
+        }
+    }
+
     private void OnEndDayClick()
     {
         if (!isTransitioning && GameManager.Instance != null)
         {
             int currentDay = GameManager.Instance.GetCurrentDay();
+            
+            // Проверяем, не последний ли это день
+            if (currentDay >= finalDay)
+            {
+                endDayButton.interactable = false;
+                return;
+            }
+
+            // Деактивируем кнопку сразу после нажатия
+            endDayButton.interactable = false;
             
             // Проверяем, есть ли сцена для текущего дня
             if (dailyScenes != null && currentDay <= dailyScenes.Length)
@@ -101,6 +139,21 @@ public class EndDayButton : MonoBehaviour
             dailyScenes.CopyTo(newSequence, 0);
             newSequence[newSequence.Length - 1] = sceneIndex;
             dailyScenes = newSequence;
+        }
+    }
+
+    // Публичный метод для ручной активации кнопки
+    public void EnableButton()
+    {
+        if (endDayButton != null && GameManager.Instance != null)
+        {
+            // Проверяем, не последний ли день перед активацией
+            if (GameManager.Instance.GetCurrentDay() >= finalDay)
+            {
+                endDayButton.interactable = false;
+                return;
+            }
+            endDayButton.interactable = true;
         }
     }
 } 

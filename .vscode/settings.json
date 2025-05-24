@@ -51,5 +51,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "NewZeki.sln"
+    "dotnet.defaultSolution": "NewZeki.sln",
+    "workbench.colorTheme": "Default Light Modern"
 }

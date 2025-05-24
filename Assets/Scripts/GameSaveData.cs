@@ -15,6 +15,5 @@ public class GameSaveData
         currentDay = 1;
         dialogShownToday = false;
         lastShownDialogIndex = -1;
-        // Добавьте здесь инициализацию других параметров игры
     }
 } 
