@@ -9,9 +9,7 @@ public class PanelManager : MonoBehaviour
     public bool isMoving = false;
     public Button showButton; // Привязанный в инспекторе кнопка
     public bool isPanelVisible = false;
-    private CurrentPosition currentPositionScript;
     private CharacterMover characterMoverScript;
-    private MovementStep1 movementStep1;
     public Vector3 targetPosition;
 
      
@@ -20,8 +18,6 @@ public class PanelManager : MonoBehaviour
     {
         // Инициализация кнопки
         showButton.onClick.AddListener(ShowPanel);
-        currentPositionScript = Player.GetComponent<CurrentPosition>();
-        movementStep1 = Player.GetComponent<MovementStep1>();
         characterMoverScript = Player.GetComponent<CharacterMover>();
         
     }
