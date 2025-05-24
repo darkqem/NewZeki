@@ -2683,32 +2683,62 @@ MonoBehaviour:
   - roomObject: {fileID: 925839794}
     roomLight: {fileID: 1249061685}
     isLit: 0
+    hasCorrectColor: 0
+    blinkTimer: 0
+    originalColor: {r: 0, g: 0, b: 0, a: 0}
   - roomObject: {fileID: 364036068}
     roomLight: {fileID: 29413106}
     isLit: 0
+    hasCorrectColor: 0
+    blinkTimer: 0
+    originalColor: {r: 0, g: 0, b: 0, a: 0}
   - roomObject: {fileID: 356463815}
     roomLight: {fileID: 292007096}
     isLit: 0
+    hasCorrectColor: 0
+    blinkTimer: 0
+    originalColor: {r: 0, g: 0, b: 0, a: 0}
   - roomObject: {fileID: 1668273972}
     roomLight: {fileID: 712252043}
     isLit: 0
+    hasCorrectColor: 0
+    blinkTimer: 0
+    originalColor: {r: 0, g: 0, b: 0, a: 0}
   - roomObject: {fileID: 191179603}
     roomLight: {fileID: 1427361131}
     isLit: 0
+    hasCorrectColor: 0
+    blinkTimer: 0
+    originalColor: {r: 0, g: 0, b: 0, a: 0}
   - roomObject: {fileID: 1219036288}
     roomLight: {fileID: 1120554932}
     isLit: 0
+    hasCorrectColor: 0
+    blinkTimer: 0
+    originalColor: {r: 0, g: 0, b: 0, a: 0}
   - roomObject: {fileID: 900227527}
     roomLight: {fileID: 561208171}
     isLit: 0
+    hasCorrectColor: 0
+    blinkTimer: 0
+    originalColor: {r: 0, g: 0, b: 0, a: 0}
   - roomObject: {fileID: 488550276}
     roomLight: {fileID: 1492450698}
     isLit: 0
+    hasCorrectColor: 0
+    blinkTimer: 0
+    originalColor: {r: 0, g: 0, b: 0, a: 0}
   - roomObject: {fileID: 1187473277}
     roomLight: {fileID: 1424516293}
     isLit: 0
-  numberOfLitRooms: 5
+    hasCorrectColor: 0
+    blinkTimer: 0
+    originalColor: {r: 0, g: 0, b: 0, a: 0}
+  numberOfLitRooms: 4
   wireGameSceneName: WireGame
+  blinkSpeed: 10
+  targetColor: {r: 0.906, g: 0.843, b: 0.235, a: 1}
+  redColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!4 &1655622299
 Transform:
   m_ObjectHideFlags: 0
@@ -2883,6 +2913,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -27.8
       objectReference: {fileID: 0}
+    - target: {fileID: 4000010644843114, guid: fe69c79d384eb4f4f944d4ec253d357a, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4000012464943430, guid: fe69c79d384eb4f4f944d4ec253d357a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2922,6 +2956,10 @@ PrefabInstance:
     - target: {fileID: 4000012464943430, guid: fe69c79d384eb4f4f944d4ec253d357a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012464943430, guid: fe69c79d384eb4f4f944d4ec253d357a, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 23000014210695672, guid: fe69c79d384eb4f4f944d4ec253d357a,
         type: 3}

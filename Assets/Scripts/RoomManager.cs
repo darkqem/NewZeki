@@ -10,17 +10,33 @@ public class RoomManager : MonoBehaviour
         public GameObject roomObject;
         public Light roomLight;
         public bool isLit = false;
+        public bool hasCorrectColor = false;
+        [HideInInspector]
+        public float blinkTimer = 0f;
+        public Color originalColor;
     }
 
     public Room[] rooms;
     public int numberOfLitRooms = 5;
     public string wireGameSceneName = "WireGame";
+    public float blinkSpeed = 1f; // Скорость мигания
+    public Color targetColor = new Color(0.906f, 0.843f, 0.235f); // E7D73C в RGB
+    public Color redColor = Color.red;
 
     private static int lastClickedRoom = -1;
     private static bool[] roomStates = null; // Сохраняем состояния комнат
 
     void Start()
     {
+        // Сохраняем оригинальные цвета ламп
+        foreach (Room room in rooms)
+        {
+            if (room.roomLight != null)
+            {
+                room.originalColor = room.roomLight.color;
+            }
+        }
+
         // Инициализируем массив состояний, если это первый запуск
         if (roomStates == null || roomStates.Length != rooms.Length)
         {
@@ -45,6 +61,7 @@ public class RoomManager : MonoBehaviour
                 if (rooms[lastClickedRoom].roomLight != null)
                 {
                     rooms[lastClickedRoom].roomLight.enabled = true;
+                    rooms[lastClickedRoom].roomLight.color = targetColor;
                 }
                 roomStates[lastClickedRoom] = true; // Сохраняем новое состояние
                 lastClickedRoom = -1;
@@ -93,6 +110,9 @@ public class RoomManager : MonoBehaviour
 
     void Update()
     {
+        HandleBlinking();
+        CheckAllRoomsLit();
+
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -102,7 +122,7 @@ public class RoomManager : MonoBehaviour
             {
                 for (int i = 0; i < rooms.Length; i++)
                 {
-                    if (hit.collider.gameObject == rooms[i].roomObject && !rooms[i].isLit)
+                    if (hit.collider.gameObject == rooms[i].roomObject && (!rooms[i].isLit || !rooms[i].hasCorrectColor))
                     {
                         lastClickedRoom = i;
                         StartWireGame();
@@ -113,6 +133,46 @@ public class RoomManager : MonoBehaviour
         }
     }
 
+    private void HandleBlinking()
+    {
+        foreach (Room room in rooms)
+        {
+            if (!room.isLit && room.roomLight != null)
+            {
+                room.blinkTimer += Time.deltaTime * blinkSpeed;
+                room.roomLight.enabled = true;
+                
+                // Мигание между красным и выключенным состоянием
+                if (Mathf.Sin(room.blinkTimer) > 0)
+                {
+                    room.roomLight.color = redColor;
+                }
+                else
+                {
+                    room.roomLight.enabled = false;
+                }
+            }
+            else if (room.isLit && room.roomLight != null)
+            {
+                // Проверяем правильный ли цвет
+                room.hasCorrectColor = ColorApproximatelyEquals(room.roomLight.color, targetColor);
+                
+                // Для отладки
+                if (!room.hasCorrectColor)
+                {
+                    Debug.Log($"Room color mismatch. Current: {room.roomLight.color}, Target: {targetColor}");
+                }
+            }
+        }
+    }
+
+    private bool ColorApproximatelyEquals(Color color1, Color color2, float tolerance = 0.01f)
+    {
+        return Mathf.Abs(color1.r - color2.r) < tolerance &&
+               Mathf.Abs(color1.g - color2.g) < tolerance &&
+               Mathf.Abs(color1.b - color2.b) < tolerance;
+    }
+
     void StartWireGame()
     {
         PlayerPrefs.SetString("PreviousScene", SceneManager.GetActiveScene().name);
@@ -121,18 +181,21 @@ public class RoomManager : MonoBehaviour
 
     private void CheckAllRoomsLit()
     {
-        bool allLit = true;
+        bool allCorrect = true;
         foreach (Room room in rooms)
         {
-            if (!room.isLit)
+            if (!room.isLit || !room.hasCorrectColor)
             {
-                allLit = false;
+                allCorrect = false;
                 break;
             }
         }
 
-        if (allLit)
+        if (allCorrect)
         {
+            // Для отладки
+            Debug.Log("All rooms are lit and have correct color!");
+            
             // Сбрасываем все статические переменные
             lastClickedRoom = -1;
             roomStates = null;
