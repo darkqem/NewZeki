@@ -1,6 +1,6 @@
 using UnityEngine;
 using cherrydev;
-
+using System;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -9,6 +9,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private string characterId;
     [SerializeField] private Scenes sceneTransition;
     [SerializeField] private Scenes1 sceneTransition1;
+   
 
     [SerializeField] private GameManager gameManager;
     [SerializeField] private bool showDialogOnStart = true; // Флаг для автоматического показа диалога при старте
@@ -86,6 +87,12 @@ public class DialogueManager : MonoBehaviour
             gameManager.StartNewGame();
             Debug.Log("Click to proceed with StartNewGame");
         });
+
+        
+        dialogBehaviour.BindExternalFunction("AddItemFromDialog", () => {
+            InventoryManager.Instance.AddItemFromDialog("ball", "Мяч");
+        });
+        
 
         // Показываем текущий диалог
         dialogBehaviour.StartDialog(dialogGraphs[currentDialogIndex]);

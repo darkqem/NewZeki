@@ -1004,6 +1004,7 @@ MonoBehaviour:
   characterId: "\u041F\u0440\u0438\u0448\u0435\u043B\u0435\u0446"
   sceneTransition: {fileID: 0}
   sceneTransition1: {fileID: 0}
+  gameManager: {fileID: 0}
   showDialogOnStart: 1
   scneneNumber: 6
   scneneNumber1: 7

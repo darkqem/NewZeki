@@ -16,10 +16,10 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 554
-    y: 53
+    x: 571
+    y: -26
     width: 190
-    height: 135
+    height: 0
   IsDragging: 0
   IsSelected: 0
   _sentence:
@@ -46,10 +46,10 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 1003
-    y: 396
+    x: 1020
+    y: 317
     width: 190
-    height: 135
+    height: 0
   IsDragging: 0
   IsSelected: 0
   _sentence:
@@ -76,10 +76,10 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 342
-    y: 394
+    x: 359
+    y: 315
     width: 190
-    height: 135
+    height: 0
   IsDragging: 0
   IsSelected: 0
   _sentence:
@@ -106,10 +106,10 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 137
-    y: 394
+    x: 154
+    y: 315
     width: 190
-    height: 135
+    height: 0
   IsDragging: 0
   IsSelected: 0
   _sentence:
@@ -137,10 +137,10 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 782
-    y: 50
+    x: 799
+    y: -29
     width: 190
-    height: 135
+    height: 0
   IsDragging: 0
   IsSelected: 0
   _sentence:
@@ -168,10 +168,10 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 554
-    y: 392
+    x: 571
+    y: 313
     width: 190
-    height: 155
+    height: 115
   IsDragging: 0
   IsSelected: 0
   Answers:
@@ -201,10 +201,10 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 992
-    y: 44
+    x: 1009
+    y: -35
     width: 190
-    height: 135
+    height: 0
   IsDragging: 0
   IsSelected: 0
   _sentence:
@@ -256,10 +256,10 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 785
-    y: 391
+    x: 802
+    y: 312
     width: 190
-    height: 135
+    height: 0
   IsDragging: 0
   IsSelected: 0
   _sentence:
@@ -288,10 +288,10 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 552
-    y: 591
+    x: 569
+    y: 512
     width: 190
-    height: 135
+    height: 0
   IsDragging: 0
   IsSelected: 0
   _sentence:
@@ -320,10 +320,10 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 551
-    y: 214
+    x: 568
+    y: 135
     width: 190
-    height: 135
+    height: 0
   IsDragging: 0
   IsSelected: 0
   _sentence:
