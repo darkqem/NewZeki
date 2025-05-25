@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterMover : MonoBehaviour
@@ -16,6 +17,8 @@ public class CharacterMover : MonoBehaviour
     private float frameTimer = 0f; // Таймер для анимации
     public float moveSpeed = 0.5f;
     public bool isMoving = false;
+    private bool isReturning = false;
+    private Stack<Vector3> movementPath = new Stack<Vector3>(); // Стек для хранения пути
 
     private void Start()
     {
@@ -36,6 +39,16 @@ public class CharacterMover : MonoBehaviour
 
     public void MoveTo(Vector3 targetPosition)
     {
+        if (isMoving || isReturning)
+        {
+            return;
+        }
+
+        // Очищаем стек пути перед новым движением
+        movementPath.Clear();
+        // Добавляем стартовую позицию как первую точку возврата
+        movementPath.Push(transform.position);
+
         targetPosition.z = 7.63f;
         if (targetPosition.x == -1.5f)
         {
@@ -55,9 +68,29 @@ public class CharacterMover : MonoBehaviour
         {
             targetPosition.x = -0.095f;
         }
-        StartCoroutine(MoveRoutine(targetPosition));
-        
 
+        StartCoroutine(MoveRoutine(targetPosition));
+    }
+
+    public void ReturnToStart()
+    {
+        if (!isReturning && !isMoving)
+        {
+            isReturning = true;
+            StartCoroutine(ReturnRoutine());
+        }
+    }
+
+    private IEnumerator ReturnRoutine()
+    {
+        while (movementPath.Count > 0)
+        {
+            Vector3 nextPosition = movementPath.Pop();
+            yield return StartCoroutine(MoveToPosition(nextPosition));
+        }
+
+        isReturning = false;
+        isMoving = false;
     }
 
     private IEnumerator MoveRoutine(Vector3 targetPosition)
@@ -66,31 +99,35 @@ public class CharacterMover : MonoBehaviour
         int targetFloor = GetFloor(targetPosition.y);
         float floorY = GetFloorY(targetFloor);
 
-        // Check if we're starting from the start position
+        // Если мы начинаем из стартовой позиции
         if (Vector3.Distance(transform.position, startPosition) < 0.05f)
         {
-            // First move to the door position
+            movementPath.Push(doorPosition);
             yield return StartCoroutine(MoveToPosition(doorPosition));
         }
 
         if (currentFloor == targetFloor)
         {
-            yield return StartCoroutine(MoveToPosition(new Vector3(targetPosition.x, floorY, targetPosition.z)));
-            
+            Vector3 finalPosition = new Vector3(targetPosition.x, floorY, targetPosition.z);
+            movementPath.Push(finalPosition);
+            yield return StartCoroutine(MoveToPosition(finalPosition));
         }
         else
         {
             // Двигаемся к лифту
-            yield return StartCoroutine(MoveToPosition(new Vector3(elevatorPosition.x, transform.position.y, elevatorPosition.z)));
+            Vector3 elevatorPos = new Vector3(elevatorPosition.x, transform.position.y, elevatorPosition.z);
+            movementPath.Push(elevatorPos);
+            yield return StartCoroutine(MoveToPosition(elevatorPos));
             
             // Поднимаемся на нужный этаж
             Vector3 elevatorTarget = new Vector3(elevatorPosition.x, floorY, elevatorPosition.z);
+            movementPath.Push(elevatorTarget);
             yield return StartCoroutine(MoveToPosition(elevatorTarget));
             
             // Двигаемся к целевой точке
             Vector3 finalPosition = new Vector3(targetPosition.x, floorY, targetPosition.z);
+            movementPath.Push(finalPosition);
             yield return StartCoroutine(MoveToPosition(finalPosition));
-            
         }
 
         isMoving = false;
@@ -98,10 +135,9 @@ public class CharacterMover : MonoBehaviour
 
     private IEnumerator MoveToPosition(Vector3 target)
     {
+        isMoving = true;
         while (Vector3.Distance(transform.position, target) > 0.05f)
         {
-            isMoving = true;
-            // Определяем направление движения и флипаем спрайт
             if (target.x < transform.position.x)
             {
                 spriteRenderer.flipX = true;
@@ -117,7 +153,7 @@ public class CharacterMover : MonoBehaviour
             cameraMoveOnTrigger.transform.position = Vector3.MoveTowards(cameraMoveOnTrigger.transform.position, cameraTargetPosition, CameraMoveSpeed * Time.deltaTime);
             yield return null;
         }
-        transform.position = target; // Фиксируем точное положение
+        transform.position = target;
     }
     private int GetFloor(float yPosition)
     {
@@ -143,28 +179,23 @@ public class CharacterMover : MonoBehaviour
 
     private void AnimateWalk()
     {
-        // Обновляем таймер
         frameTimer += Time.deltaTime;
-
-        // Меняем кадр, если прошло достаточно времени
         if (frameTimer >= frameRate)
         {
-            frameTimer = 0f; // Сбрасываем таймер
-            currentFrame = (currentFrame + 1) % walkSprites.Length; // Переходим к следующему кадру
-            spriteRenderer.sprite = walkSprites[currentFrame]; // Устанавливаем текущий кадр
+            frameTimer = 0f;
+            currentFrame = (currentFrame + 1) % walkSprites.Length;
+            spriteRenderer.sprite = walkSprites[currentFrame];
         }
     }
 
-    public void AnimateIdle()
+    private void AnimateIdle()
     {
         frameTimer += Time.deltaTime;
-
-        // Меняем кадр, если прошло достаточно времени
         if (frameTimer >= frameRate)
         {
-            frameTimer = 0f; // Сбрасываем таймер
-            currentFrame = (currentFrame + 1) % idleSprites.Length; // Переходим к следующему кадру
-            spriteRenderer.sprite = idleSprites[currentFrame]; // Устанавливаем текущий кадр
+            frameTimer = 0f;
+            currentFrame = (currentFrame + 1) % idleSprites.Length;
+            spriteRenderer.sprite = idleSprites[currentFrame];
         }
     }
 }
