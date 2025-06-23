@@ -173,7 +173,7 @@ public class GameManager : MonoBehaviour
         SaveGame();
         
         // Загружаем начальную сцену
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(10);
     }
     
     // Метод для продолжения игры (загрузка сохранённого прогресса)
