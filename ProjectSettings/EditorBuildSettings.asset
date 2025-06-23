@@ -35,4 +35,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/NightWireConnection.unity
     guid: 71a2320cb7e81244fa480cf1acc3fb29
+  - enabled: 1
+    path: Assets/Scenes/intro.unity
+    guid: 4853088dcfcc11a4aa6c2ec8b6efc8f9
+  - enabled: 1
+    path: Assets/Scenes/letter_table.unity
+    guid: a18ca32fbbfcc8345ba712f520618165
+  - enabled: 1
+    path: Assets/Scenes/letter_sheet.unity
+    guid: 1fc3e246e6899834a8446055560f21a5
   m_configObjects: {}
